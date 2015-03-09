@@ -1,0 +1,1 @@
+{:require [reagent-test.app adzerk.boot-cljs-repl adzerk.boot-reload], :init-fns [reagent-test.app/init]}

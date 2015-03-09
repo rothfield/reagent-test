@@ -1,0 +1,6 @@
+exit
+(in-ns 'reagent-test)
+(in-ns 'reagent-testz)
+(start-repl)
+
+exit

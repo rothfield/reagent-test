@@ -1,0 +1,2 @@
+{:require  [reagent-test.app]
+ :init-fns [reagent-test.app/init]}
