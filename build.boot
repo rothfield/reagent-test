@@ -6,7 +6,7 @@
                  [adzerk/boot-reload    "0.2.4"      :scope "test"]
                  [pandeiro/boot-http    "0.6.1"      :scope "test"]
                  [reagent "0.5.0-alpha3"]
-								 
+								 [whodidthis/clj-pouchdb "0.1.0-SNAPSHOT"]
                  [org.clojure/clojure "1.6.0"]
                  [reagent-forms "0.4.3"]
                  [reagent-utils "0.1.3"]
@@ -20,9 +20,7 @@
  '[pandeiro.boot-http    :refer [serve]])
 
 (deftask build []
-  (comp (speak)
-        
-        (cljs)
+  (comp (cljs)
         ))
 
 (deftask run []

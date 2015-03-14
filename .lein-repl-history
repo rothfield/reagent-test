@@ -1,0 +1,10 @@
+(seq? "hi")
+(seq? [])
+(array?
+[])
+(100 times)
+(range 100)
+(doseq (map inc (range 100)))
+(doall (map inc (range 100)))
+(doall (map inc (range 102)))
+(range 1)
