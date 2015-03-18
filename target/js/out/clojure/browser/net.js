@@ -9,15 +9,15 @@ goog.require('goog.net.XhrIo');
 goog.require('goog.json');
 goog.require('clojure.browser.event');
 clojure.browser.net._STAR_timeout_STAR_ = (10000);
-clojure.browser.net.event_types = cljs.core.into.call(null,cljs.core.PersistentArrayMap.EMPTY,cljs.core.map.call(null,(function (p__5637){
-var vec__5638 = p__5637;
-var k = cljs.core.nth.call(null,vec__5638,(0),null);
-var v = cljs.core.nth.call(null,vec__5638,(1),null);
+clojure.browser.net.event_types = cljs.core.into.call(null,cljs.core.PersistentArrayMap.EMPTY,cljs.core.map.call(null,(function (p__9377){
+var vec__9378 = p__9377;
+var k = cljs.core.nth.call(null,vec__9378,(0),null);
+var v = cljs.core.nth.call(null,vec__9378,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.keyword.call(null,k.toLowerCase()),v], null);
 }),cljs.core.merge.call(null,cljs.core.js__GT_clj.call(null,goog.net.EventType))));
 
-clojure.browser.net.IConnection = (function (){var obj5640 = {};
-return obj5640;
+clojure.browser.net.IConnection = (function (){var obj9380 = {};
+return obj9380;
 })();
 
 clojure.browser.net.connect = (function() {
@@ -325,10 +325,10 @@ goog.net.XhrIo.prototype.clojure$browser$event$IEventType$ = true;
 goog.net.XhrIo.prototype.clojure$browser$event$IEventType$event_types$arity$1 = (function (this$){
 var this$__$1 = this;
 return cljs.core.into.call(null,cljs.core.PersistentArrayMap.EMPTY,cljs.core.map.call(null,((function (this$__$1){
-return (function (p__5641){
-var vec__5642 = p__5641;
-var k = cljs.core.nth.call(null,vec__5642,(0),null);
-var v = cljs.core.nth.call(null,vec__5642,(1),null);
+return (function (p__9381){
+var vec__9382 = p__9381;
+var k = cljs.core.nth.call(null,vec__9382,(0),null);
+var v = cljs.core.nth.call(null,vec__9382,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.keyword.call(null,k.toLowerCase()),v], null);
 });})(this$__$1))
 ,cljs.core.merge.call(null,cljs.core.js__GT_clj.call(null,goog.net.EventType))));
@@ -362,10 +362,10 @@ this$__$1.setTimeoutInterval(timeout);
 
 return this$__$1.send(uri,method,content,headers);
 });
-clojure.browser.net.xpc_config_fields = cljs.core.into.call(null,cljs.core.PersistentArrayMap.EMPTY,cljs.core.map.call(null,(function (p__5643){
-var vec__5644 = p__5643;
-var k = cljs.core.nth.call(null,vec__5644,(0),null);
-var v = cljs.core.nth.call(null,vec__5644,(1),null);
+clojure.browser.net.xpc_config_fields = cljs.core.into.call(null,cljs.core.PersistentArrayMap.EMPTY,cljs.core.map.call(null,(function (p__9383){
+var vec__9384 = p__9383;
+var k = cljs.core.nth.call(null,vec__9384,(0),null);
+var v = cljs.core.nth.call(null,vec__9384,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.keyword.call(null,k.toLowerCase()),v], null);
 }),cljs.core.js__GT_clj.call(null,goog.net.xpc.CfgFields)));
 /**
@@ -375,8 +375,8 @@ clojure.browser.net.xhr_connection = (function xhr_connection(){
 return (new goog.net.XhrIo());
 });
 
-clojure.browser.net.ICrossPageChannel = (function (){var obj5646 = {};
-return obj5646;
+clojure.browser.net.ICrossPageChannel = (function (){var obj9386 = {};
+return obj9386;
 })();
 
 clojure.browser.net.register_service = (function() {
@@ -514,22 +514,22 @@ return null;
 }
 });
 var xpc_connection__1 = (function (config){
-return (new goog.net.xpc.CrossPageChannel(cljs.core.reduce.call(null,(function (sum,p__5652){
-var vec__5653 = p__5652;
-var k = cljs.core.nth.call(null,vec__5653,(0),null);
-var v = cljs.core.nth.call(null,vec__5653,(1),null);
+return (new goog.net.xpc.CrossPageChannel(cljs.core.reduce.call(null,(function (sum,p__9392){
+var vec__9393 = p__9392;
+var k = cljs.core.nth.call(null,vec__9393,(0),null);
+var v = cljs.core.nth.call(null,vec__9393,(1),null);
 var temp__4124__auto__ = cljs.core.get.call(null,clojure.browser.net.xpc_config_fields,k);
 if(cljs.core.truth_(temp__4124__auto__)){
 var field = temp__4124__auto__;
-var G__5654 = sum;
-(G__5654[field] = v);
+var G__9394 = sum;
+(G__9394[field] = v);
 
-return G__5654;
+return G__9394;
 } else {
 return sum;
 }
-}),(function (){var obj5656 = {};
-return obj5656;
+}),(function (){var obj9396 = {};
+return obj9396;
 })(),config)));
 });
 xpc_connection = function(config){

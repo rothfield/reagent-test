@@ -46,7 +46,7 @@ throw (new Error([cljs.core.str("Assert failed: "),cljs.core.str(cljs.core.pr_st
 return React.createElement(type,props,child);
 });
 var create_element__4 = (function() { 
-var G__12062__delegate = function (type,props,child,children){
+var G__18674__delegate = function (type,props,child,children){
 if(!(cljs.core.map_QMARK_.call(null,props))){
 } else {
 throw (new Error([cljs.core.str("Assert failed: "),cljs.core.str(cljs.core.pr_str.call(null,cljs.core.list(new cljs.core.Symbol(null,"not","not",1044554643,null),cljs.core.list(new cljs.core.Symbol(null,"map?","map?",-1780568534,null),new cljs.core.Symbol(null,"props","props",2093813254,null)))))].join('')));
@@ -54,26 +54,26 @@ throw (new Error([cljs.core.str("Assert failed: "),cljs.core.str(cljs.core.pr_st
 
 return cljs.core.apply.call(null,React.createElement,type,props,child,children);
 };
-var G__12062 = function (type,props,child,var_args){
+var G__18674 = function (type,props,child,var_args){
 var children = null;
 if (arguments.length > 3) {
-var G__12063__i = 0, G__12063__a = new Array(arguments.length -  3);
-while (G__12063__i < G__12063__a.length) {G__12063__a[G__12063__i] = arguments[G__12063__i + 3]; ++G__12063__i;}
-  children = new cljs.core.IndexedSeq(G__12063__a,0);
+var G__18675__i = 0, G__18675__a = new Array(arguments.length -  3);
+while (G__18675__i < G__18675__a.length) {G__18675__a[G__18675__i] = arguments[G__18675__i + 3]; ++G__18675__i;}
+  children = new cljs.core.IndexedSeq(G__18675__a,0);
 } 
-return G__12062__delegate.call(this,type,props,child,children);};
-G__12062.cljs$lang$maxFixedArity = 3;
-G__12062.cljs$lang$applyTo = (function (arglist__12064){
-var type = cljs.core.first(arglist__12064);
-arglist__12064 = cljs.core.next(arglist__12064);
-var props = cljs.core.first(arglist__12064);
-arglist__12064 = cljs.core.next(arglist__12064);
-var child = cljs.core.first(arglist__12064);
-var children = cljs.core.rest(arglist__12064);
-return G__12062__delegate(type,props,child,children);
+return G__18674__delegate.call(this,type,props,child,children);};
+G__18674.cljs$lang$maxFixedArity = 3;
+G__18674.cljs$lang$applyTo = (function (arglist__18676){
+var type = cljs.core.first(arglist__18676);
+arglist__18676 = cljs.core.next(arglist__18676);
+var props = cljs.core.first(arglist__18676);
+arglist__18676 = cljs.core.next(arglist__18676);
+var child = cljs.core.first(arglist__18676);
+var children = cljs.core.rest(arglist__18676);
+return G__18674__delegate(type,props,child,children);
 });
-G__12062.cljs$core$IFn$_invoke$arity$variadic = G__12062__delegate;
-return G__12062;
+G__18674.cljs$core$IFn$_invoke$arity$variadic = G__18674__delegate;
+return G__18674;
 })()
 ;
 create_element = function(type,props,child,var_args){
@@ -86,13 +86,13 @@ return create_element__2.call(this,type,props);
 case 3:
 return create_element__3.call(this,type,props,child);
 default:
-var G__12065 = null;
+var G__18677 = null;
 if (arguments.length > 3) {
-var G__12066__i = 0, G__12066__a = new Array(arguments.length -  3);
-while (G__12066__i < G__12066__a.length) {G__12066__a[G__12066__i] = arguments[G__12066__i + 3]; ++G__12066__i;}
-G__12065 = new cljs.core.IndexedSeq(G__12066__a,0);
+var G__18678__i = 0, G__18678__a = new Array(arguments.length -  3);
+while (G__18678__i < G__18678__a.length) {G__18678__a[G__18678__i] = arguments[G__18678__i + 3]; ++G__18678__i;}
+G__18677 = new cljs.core.IndexedSeq(G__18678__a,0);
 }
-return create_element__4.cljs$core$IFn$_invoke$arity$variadic(type,props,child, G__12065);
+return create_element__4.cljs$core$IFn$_invoke$arity$variadic(type,props,child, G__18677);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
@@ -169,11 +169,11 @@ return reagent.impl.util.unmount_component_at_node.call(null,container);
 * Turns a component into an HTML string.
 */
 reagent.core.render_to_string = (function render_to_string(component){
-var _STAR_non_reactive_STAR_12068 = reagent.impl.component._STAR_non_reactive_STAR_;
+var _STAR_non_reactive_STAR_18680 = reagent.impl.component._STAR_non_reactive_STAR_;
 reagent.impl.component._STAR_non_reactive_STAR_ = true;
 
 try{return (React["renderToString"])(reagent.core.as_element.call(null,component));
-}finally {reagent.impl.component._STAR_non_reactive_STAR_ = _STAR_non_reactive_STAR_12068;
+}finally {reagent.impl.component._STAR_non_reactive_STAR_ = _STAR_non_reactive_STAR_18680;
 }});
 reagent.core.as_component = reagent.core.as_element;
 reagent.core.render_component = reagent.core.render;
@@ -182,11 +182,11 @@ reagent.core.render_component_to_string = reagent.core.render_to_string;
 * Turns a component into an HTML string, without data-react-id attributes, etc.
 */
 reagent.core.render_to_static_markup = (function render_to_static_markup(component){
-var _STAR_non_reactive_STAR_12070 = reagent.impl.component._STAR_non_reactive_STAR_;
+var _STAR_non_reactive_STAR_18682 = reagent.impl.component._STAR_non_reactive_STAR_;
 reagent.impl.component._STAR_non_reactive_STAR_ = true;
 
 try{return (React["renderToStaticMarkup"])(reagent.core.as_element.call(null,component));
-}finally {reagent.impl.component._STAR_non_reactive_STAR_ = _STAR_non_reactive_STAR_12070;
+}finally {reagent.impl.component._STAR_non_reactive_STAR_ = _STAR_non_reactive_STAR_18682;
 }});
 reagent.core.force_update_all = (function force_update_all(){
 return reagent.impl.util.force_update_all.call(null);
@@ -342,25 +342,25 @@ var atom__1 = (function (x){
 return reagent.ratom.atom.call(null,x);
 });
 var atom__2 = (function() { 
-var G__12071__delegate = function (x,rest){
+var G__18683__delegate = function (x,rest){
 return cljs.core.apply.call(null,reagent.ratom.atom,x,rest);
 };
-var G__12071 = function (x,var_args){
+var G__18683 = function (x,var_args){
 var rest = null;
 if (arguments.length > 1) {
-var G__12072__i = 0, G__12072__a = new Array(arguments.length -  1);
-while (G__12072__i < G__12072__a.length) {G__12072__a[G__12072__i] = arguments[G__12072__i + 1]; ++G__12072__i;}
-  rest = new cljs.core.IndexedSeq(G__12072__a,0);
+var G__18684__i = 0, G__18684__a = new Array(arguments.length -  1);
+while (G__18684__i < G__18684__a.length) {G__18684__a[G__18684__i] = arguments[G__18684__i + 1]; ++G__18684__i;}
+  rest = new cljs.core.IndexedSeq(G__18684__a,0);
 } 
-return G__12071__delegate.call(this,x,rest);};
-G__12071.cljs$lang$maxFixedArity = 1;
-G__12071.cljs$lang$applyTo = (function (arglist__12073){
-var x = cljs.core.first(arglist__12073);
-var rest = cljs.core.rest(arglist__12073);
-return G__12071__delegate(x,rest);
+return G__18683__delegate.call(this,x,rest);};
+G__18683.cljs$lang$maxFixedArity = 1;
+G__18683.cljs$lang$applyTo = (function (arglist__18685){
+var x = cljs.core.first(arglist__18685);
+var rest = cljs.core.rest(arglist__18685);
+return G__18683__delegate(x,rest);
 });
-G__12071.cljs$core$IFn$_invoke$arity$variadic = G__12071__delegate;
-return G__12071;
+G__18683.cljs$core$IFn$_invoke$arity$variadic = G__18683__delegate;
+return G__18683;
 })()
 ;
 atom = function(x,var_args){
@@ -369,13 +369,13 @@ switch(arguments.length){
 case 1:
 return atom__1.call(this,x);
 default:
-var G__12074 = null;
+var G__18686 = null;
 if (arguments.length > 1) {
-var G__12075__i = 0, G__12075__a = new Array(arguments.length -  1);
-while (G__12075__i < G__12075__a.length) {G__12075__a[G__12075__i] = arguments[G__12075__i + 1]; ++G__12075__i;}
-G__12074 = new cljs.core.IndexedSeq(G__12075__a,0);
+var G__18687__i = 0, G__18687__a = new Array(arguments.length -  1);
+while (G__18687__i < G__18687__a.length) {G__18687__a[G__18687__i] = arguments[G__18687__i + 1]; ++G__18687__i;}
+G__18686 = new cljs.core.IndexedSeq(G__18687__a,0);
 }
-return atom__2.cljs$core$IFn$_invoke$arity$variadic(x, G__12074);
+return atom__2.cljs$core$IFn$_invoke$arity$variadic(x, G__18686);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
@@ -416,17 +416,17 @@ return reagent.ratom.make_wrapper.call(null,value,reset_fn,args);
 var wrap = function (value,reset_fn,var_args){
 var args = null;
 if (arguments.length > 2) {
-var G__12076__i = 0, G__12076__a = new Array(arguments.length -  2);
-while (G__12076__i < G__12076__a.length) {G__12076__a[G__12076__i] = arguments[G__12076__i + 2]; ++G__12076__i;}
-  args = new cljs.core.IndexedSeq(G__12076__a,0);
+var G__18688__i = 0, G__18688__a = new Array(arguments.length -  2);
+while (G__18688__i < G__18688__a.length) {G__18688__a[G__18688__i] = arguments[G__18688__i + 2]; ++G__18688__i;}
+  args = new cljs.core.IndexedSeq(G__18688__a,0);
 } 
 return wrap__delegate.call(this,value,reset_fn,args);};
 wrap.cljs$lang$maxFixedArity = 2;
-wrap.cljs$lang$applyTo = (function (arglist__12077){
-var value = cljs.core.first(arglist__12077);
-arglist__12077 = cljs.core.next(arglist__12077);
-var reset_fn = cljs.core.first(arglist__12077);
-var args = cljs.core.rest(arglist__12077);
+wrap.cljs$lang$applyTo = (function (arglist__18689){
+var value = cljs.core.first(arglist__18689);
+arglist__18689 = cljs.core.next(arglist__18689);
+var reset_fn = cljs.core.first(arglist__18689);
+var args = cljs.core.rest(arglist__18689);
 return wrap__delegate(value,reset_fn,args);
 });
 wrap.cljs$core$IFn$_invoke$arity$variadic = wrap__delegate;
@@ -480,15 +480,15 @@ return (new reagent.impl.util.partial_ifn(f,args,null));
 var partial = function (f,var_args){
 var args = null;
 if (arguments.length > 1) {
-var G__12078__i = 0, G__12078__a = new Array(arguments.length -  1);
-while (G__12078__i < G__12078__a.length) {G__12078__a[G__12078__i] = arguments[G__12078__i + 1]; ++G__12078__i;}
-  args = new cljs.core.IndexedSeq(G__12078__a,0);
+var G__18690__i = 0, G__18690__a = new Array(arguments.length -  1);
+while (G__18690__i < G__18690__a.length) {G__18690__a[G__18690__i] = arguments[G__18690__i + 1]; ++G__18690__i;}
+  args = new cljs.core.IndexedSeq(G__18690__a,0);
 } 
 return partial__delegate.call(this,f,args);};
 partial.cljs$lang$maxFixedArity = 1;
-partial.cljs$lang$applyTo = (function (arglist__12079){
-var f = cljs.core.first(arglist__12079);
-var args = cljs.core.rest(arglist__12079);
+partial.cljs$lang$applyTo = (function (arglist__18691){
+var f = cljs.core.first(arglist__18691);
+var args = cljs.core.rest(arglist__18691);
 return partial__delegate(f,args);
 });
 partial.cljs$core$IFn$_invoke$arity$variadic = partial__delegate;

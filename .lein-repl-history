@@ -8,3 +8,20 @@
 (doall (map inc (range 100)))
 (doall (map inc (range 102)))
 (range 1)
+(get 1 [1 2 3])
+(get [1 2 3] 1)
+(def h {:strain-data {:markers ["met" "lac"]}})
+(update-in h [:strain-data :markers] conj)
+(update-in h [:strain-data :markers] conj nil)
+(update-in h [:strain-data :markers] conj "")
+h
+(get h [:strain-data :markers])
+(get-in h [:strain-data :markers])
+(def h2 {"rows" [1])
+)
+h2
+(def h2 {"rows" [1]})
+h2
+("rows" h2)
+(get "rows" h2)
+(get h2 "rows")

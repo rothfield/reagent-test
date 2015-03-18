@@ -2,8 +2,8 @@
 goog.provide('adzerk.boot_cljs_repl');
 goog.require('cljs.core');
 goog.require('weasel.repl');
-var repl_conn_12369 = null;
-if(cljs.core.truth_((function (){var and__3541__auto__ = repl_conn_12369;
+var repl_conn_39939 = null;
+if(cljs.core.truth_((function (){var and__3541__auto__ = repl_conn_39939;
 if(cljs.core.truth_(and__3541__auto__)){
 return !(weasel.repl.alive_QMARK_.call(null));
 } else {

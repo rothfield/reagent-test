@@ -57,71 +57,14 @@
      }
     ))
 
-;;https://github.com/davber/clj-pouch
-;;
-(defn create-db
-  "Create a new PouchDB database given optional name and options"
-  [& [name & [options]]]
-  (js/PouchDB. name (hash-to-obj options)))
-
-(def db (create-db "gt8"))
-
-(defn load-strain-names[]
-   (.allDocs db (hash-to-obj {:include_docs true
-                              :limit  4000
-                              })
-             (fn[err raw-res]
-               (if err
-                 (log "ERROR")
-              (let [res (js->clj raw-res)
-                    ;; tricky. have to use doall to get the lazy sequence
-                    ;; in memory
-
-                snames 
-                    (->> (get res "rows") 
-                         (map #(get % "doc"))
-                         (filter #(= "strain" (get % "type")))
-                         (map #(get % "name"))
-                         doall
-                         )
-                    ]
-                (log "snames")
-                (log (count snames))
-            ;    (log "totalrows")
-            ;    (get res "total_rows")
-                (.autocomplete (js/$ "#copy_from_strain")
-                           (clj->js {:source snames}))
-                               
-     ;;     (.autocomplete (js/$ "#copy_from_strain") 
-      ;;                   ["aaa" "aab"])
-                        ;; (hash-to-obj {"source" snames}))
-  )))))
-
-(defn save-app-state[]
-  (log "entering save-app-state")
-  (log "app-state is")
-  (log @app-state)
-  (go
-    (let [res (<! (pouchdb-core/put-doc db @app-state))
-          ]
-
-      (log "response for put-doc, save-app-state is")
-      (log res)
-      (swap! app-state assoc-in [:_id] (get res "_id"))
-      )
-    ))
-
-
-
-
-;; -------------------------
-;; Views
-
 (defn copy-strain-input-did-mount []
   (.log js/console "in copy-strain-input-did-mount") 
-  (let [snames (load-strain-names)]
-    (.log js/console snames)
-))
+  (log "load strain names!")
+  (js/$ (fn []
+          (.autocomplete (js/$ "#copy_from_strain") 
+                         (clj->js {:source (load-strain-names)
+                                   })))))
+
 (defn copy-strain-input[]
   [:input#copy_from_strain]
   )
@@ -244,10 +187,45 @@
    ]
   )
 
+;;https://github.com/davber/clj-pouch
+;;
+(defn create-db
+  "Create a new PouchDB database given optional name and options"
+  [& [name & [options]]]
+  (js/PouchDB. name (hash-to-obj options)))
+
+(def db (create-db "gt6"))
+
+(defn load-strain-names[]
+  (log "load-strain-names")
+  (go
+    (let [c (pouchdb-core/all-docs db {:include_docs true})
+                     res (<! c)]
+      (log "response for all-docs is")
+      (log res)
+      (->> (get res "rows") (filter #(= "strain" (get % "type"))) log)
+    ))
+  ["aab" "art" "axe"]
+  ) 
+(defn save-app-state[]
+  (log "entering save-app-state")
+  (log "app-state is")
+  (log @app-state)
+  (go
+    (let [res (<! (pouchdb-core/put-doc db @app-state))
+          ]
+
+      (log "response for put-doc, save-app-state is")
+      (log res)
+      (swap! app-state assoc-in [:_id] (get res "_id"))
+      )
+    ))
 
 
 
 
+;; -------------------------
+;; Views
 (defn save-button[]
   [:button#saveButton.btn-primary
    {
@@ -281,7 +259,7 @@
                         ) 
                  (log (deref app-state)))
 
-            :class "marker_entry" :maxLength "15"
+            :class "marker_entry" :maxlength "15"
             :size "20" :type "text" :value m}] 
    ]
   )
@@ -294,7 +272,7 @@
       [:label.list-group-item-heading "Markers"]
       "    "
       [:button#myButton.btn-info.btn-xs
-       {:autoComplete "off",
+       {:autocomplete "off",
         :on-click #(swap! app-state
                           update-in 
                           [:strain-data :markers]
@@ -318,7 +296,7 @@
     [:label.list-group-item-heading "Markers"]
     "    "
     [:button#myButton.btn-info.btn-xs
-     {:autoComplete "off",
+     {:autocomplete "off",
       :type "button"}
      "Add marker"]
     ]
@@ -416,6 +394,7 @@
       )            
     )
   )
+
 (defn create-sample-data[]
   (log "creating sample data")
   ;; Seems to work OK
@@ -424,23 +403,12 @@
               (let [res (<! (pouchdb-core/post-doc db {:type "strain" :name (str "Strain" %)})) 
                     ]
                 ))
-           (range 111) 
+           (range 5) 
            )))
 
-(defn zzcreate-sample-data[]
-  (log "creating sample data")
-  ;; Seems to work OK
-  (dotimes [n 400] 
-           (go
-              (let [res (<! (pouchdb-core/post-doc db {:type "strain" :name (str "Strain" n)})) 
-                    ]
-                ))
-           ))
-
 (defn init []
-;;  (save-app-state)
- (load-app-state)
-;;(create-sample-data)
+ ;; (load-app-state)
+ ;; (create-sample-data)
   (.log js/console "init")
   (reagent/render-component [strain] 
                             (.getElementById js/document "container"))

@@ -25,9 +25,7 @@ goog.addDependency("../cljs/core/async/impl/ioc_helpers.js", ['cljs.core.async.i
 goog.addDependency("../cljs/core/async/impl/timers.js", ['cljs.core.async.impl.timers'], ['cljs.core.async.impl.channels', 'cljs.core.async.impl.dispatch', 'cljs.core', 'cljs.core.async.impl.protocols']);
 goog.addDependency("../cljs/core/async.js", ['cljs.core.async'], ['cljs.core.async.impl.channels', 'cljs.core.async.impl.dispatch', 'cljs.core', 'cljs.core.async.impl.buffers', 'cljs.core.async.impl.protocols', 'cljs.core.async.impl.ioc_helpers', 'cljs.core.async.impl.timers']);
 goog.addDependency("../clj_pouchdb/core.js", ['clj_pouchdb.core'], ['cljs.core', 'cljs.core.async']);
-goog.addDependency("../clojure/walk.js", ['clojure.walk'], ['cljs.core']);
-goog.addDependency("../secretary/core.js", ['secretary.core'], ['cljs.core', 'clojure.string', 'clojure.walk']);
-goog.addDependency("../reagent_test/app.js", ['reagent_test.app'], ['reagent.session', 'reagent.core', 'cljs.core', 'goog.history.EventType', 'cljsjs.react', 'goog.History', 'cljs.core.async', 'clj_pouchdb.core', 'secretary.core', 'goog.events']);
+goog.addDependency("../reagent_test/app.js", ['reagent_test.app'], ['reagent.session', 'reagent.core', 'cljs.core', 'goog.history.EventType', 'cljsjs.react', 'cljs.core.async', 'clj_pouchdb.core', 'goog.events']);
 goog.addDependency("../adzerk/boot_reload.js", ['adzerk.boot_reload'], ['cljs.core', 'adzerk.boot_reload.client', 'reagent_test.app']);
 goog.addDependency("../weasel/impls/websocket.js", ['weasel.impls.websocket'], ['cljs.core', 'clojure.browser.net', 'goog.net.WebSocket', 'clojure.browser.event']);
 goog.addDependency("../weasel/repl.js", ['weasel.repl'], ['weasel.impls.websocket', 'cljs.core', 'clojure.browser.net', 'cljs.reader', 'clojure.browser.event']);

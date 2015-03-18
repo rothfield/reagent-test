@@ -3091,7 +3091,6 @@ function init(api, opts, callback) {
   }
 
   api._allDocs = function idb_allDocs(opts, callback) {
-    console.log("Entering api._allDocs");
     // first count the total_rows
     countDocs(function (err, totalRows) {
       if (err) {
