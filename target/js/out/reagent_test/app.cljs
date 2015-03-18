@@ -65,37 +65,37 @@
   (js/PouchDB. name (hash-to-obj options)))
 
 (def db (create-db "gt8"))
+(def remote-db (create-db "http://localhost:5984/gt8"))
 
 (defn load-strain-names[]
-   (.allDocs db (hash-to-obj {:include_docs true
-                              :limit  4000
-                              })
-             (fn[err raw-res]
-               (if err
-                 (log "ERROR")
-              (let [res (js->clj raw-res)
-                    ;; tricky. have to use doall to get the lazy sequence
-                    ;; in memory
+  (.allDocs db (hash-to-obj {:include_docs true
+                             })
+            (fn[err raw-res]
+              (if err
+                (log "ERROR")
+                (let [res (js->clj raw-res)
+                      ;; tricky. have to use doall to get the lazy sequence
+                      ;; in memory
 
-                snames 
-                    (->> (get res "rows") 
-                         (map #(get % "doc"))
-                         (filter #(= "strain" (get % "type")))
-                         (map #(get % "name"))
-                         doall
-                         )
-                    ]
-                (log "snames")
-                (log (count snames))
-            ;    (log "totalrows")
-            ;    (get res "total_rows")
-                (.autocomplete (js/$ "#copy_from_strain")
-                           (clj->js {:source snames}))
-                               
-     ;;     (.autocomplete (js/$ "#copy_from_strain") 
-      ;;                   ["aaa" "aab"])
-                        ;; (hash-to-obj {"source" snames}))
-  )))))
+                      snames 
+                      (->> (get res "rows") 
+                           (map #(get % "doc"))
+                           (filter #(= "strain" (get % "type")))
+                           (map #(get % "name"))
+                           doall
+                           )
+                      ]
+                  (log "snames")
+                  (log (count snames))
+                  ;    (log "totalrows")
+                  ;    (get res "total_rows")
+                  (.autocomplete (js/$ "#copy_from_strain")
+                                 (clj->js {:source snames}))
+
+                  ;;     (.autocomplete (js/$ "#copy_from_strain") 
+                  ;;                   ["aaa" "aab"])
+                  ;; (hash-to-obj {"source" snames}))
+                  )))))
 
 (defn save-app-state[]
   (log "entering save-app-state")
@@ -103,11 +103,16 @@
   (log @app-state)
   (go
     (let [res (<! (pouchdb-core/put-doc db @app-state))
+          new-rev (get res :rev)
           ]
+      (log "new-rev:")
+      (log new-rev)
 
       (log "response for put-doc, save-app-state is")
       (log res)
-      (swap! app-state assoc-in [:_id] (get res "_id"))
+      (swap! app-state assoc "_rev" (get res :rev))
+      (log "app-state after swap!")
+      (log @app-state)
       )
     ))
 
@@ -117,11 +122,32 @@
 ;; -------------------------
 ;; Views
 
+
+(defn remarks[current-value]
+  [:div.form-group
+   [:label {:for "comment"} "Remarks:"]
+   [:textarea#remarks.form-control 
+    {:rows "8"
+     :value current-value
+     :on-change 
+     #(do (let [new-val
+                (-> % .-target .-value)
+                ]
+            (log "new-val")
+            (log new-val)
+            (swap! app-state assoc-in
+                   [:strain-data :remarks]
+                   new-val)
+            ) 
+          )
+     }
+    ]]
+  )
 (defn copy-strain-input-did-mount []
   (.log js/console "in copy-strain-input-did-mount") 
   (let [snames (load-strain-names)]
     (.log js/console snames)
-))
+    ))
 (defn copy-strain-input[]
   [:input#copy_from_strain]
   )
@@ -155,16 +181,17 @@
 
 (defn species-div[species-list current-value change-species-flag]
   (if-not change-species-flag
-    [:div
+    [:div.form-group
      [:label {:style {:width "100px"}} "Species"]
      [:span 
       current-value
       ]
-     [:button.btn.btn-sm.btn-info {:type "button"
-                                   :on-click #(swap! app-state
-                                                     assoc-in 
-                                                     [:strain-data :change-species-flag] true) 
-                                   } "Change species"]
+     [:button.btn.btn-sm.btn-info 
+      {:type "button"
+       :on-click #(swap! app-state
+                         assoc-in 
+                         [:strain-data :change-species-flag] true) 
+       } "Change species"]
      ] 
     [:div
      [:label {:style {:width "100px"}} "Species"]
@@ -176,36 +203,36 @@
 
 
 (defn copy-details-div[]
-    (log "entering copy-details-div")
+  (log "entering copy-details-div")
   (when false
     (log "entering copy-details-div, app-state is")
     (log @app-state)
     )
-    [:div.ui-widget
-     [:label {:for "copy_from_strain"} 
-      "Enter name of existing (non-plasmid;phage; or F' containing Strain)."
-      [:br]
-      "All information from this Strain (except for Remarks) will be copied to the current new Strain."]
-     [copy-strain-input-component]
-     [:div.button_row
-      [:input#copy_details_submit_btn
-       {:class "btn btn-primary" :value "OK", :type "submit", 
-        :name "copy_details_submit"
-        :on-click 
-        #(swap! app-state assoc-in
-                [:strain-data :copy-details-flag] false) 
-        }
-       ]
-      [:input#copy_details_cancel_btn
-       {:value "Cancel",
-        :class "btn btn-secondary"
-        :type "button",
-        :name "copy_details_cancel"
-        :on-click 
-        #(swap! app-state assoc-in
-                [:strain-data :copy-details-flag] false) 
-        }]]]
-    
+  [:div.ui-widget
+   [:label {:for "copy_from_strain"} 
+    "Enter name of existing (non-plasmid;phage; or F' containing Strain)."
+    [:br]
+    "All information from this Strain (except for Remarks) will be copied to the current new Strain."]
+   [copy-strain-input-component]
+   [:div.button_row
+    [:input#copy_details_submit_btn
+     {:class "btn btn-primary" :value "OK", :type "submit", 
+      :name "copy_details_submit"
+      :on-click 
+      #(swap! app-state assoc-in
+              [:strain-data :copy-details-flag] false) 
+      }
+     ]
+    [:input#copy_details_cancel_btn
+     {:value "Cancel",
+      :class "btn btn-secondary"
+      :type "button",
+      :name "copy_details_cancel"
+      :on-click 
+      #(swap! app-state assoc-in
+              [:strain-data :copy-details-flag] false) 
+      }]]]
+
   )
 
 (defn my-modal-div[]
@@ -260,54 +287,50 @@
   [:input#copy_details_show_btn.details_button
    {:value "Copy Details From Existing Strain...",
     :type "button",
-    :on-click #(swap! app-state
-                      assoc-in 
-                      [:strain-data :copy-details-flag] true) 
+    :on-click 
+    #(swap! app-state
+            assoc-in 
+            [:strain-data :copy-details-flag] true) 
     :name "copy_details_show"}
    ]
   )
 
 (defn marker-input[m my-key]
   (log (str "my-key is " my-key))
-  [:li.list-group-item {:key my-key}
-   [:input {
+  [:li.list-group-item.marker-input {:key my-key}
+   [:input 
+    {
+     :on-change 
+     #(do (swap! app-state assoc-in
+                 [:strain-data :markers my-key]
+                 (-> % .-target .-value)
+                 ) 
+          (log (deref app-state)))
 
-            :on-change 
-            ;;(fn[a b]
-            ;;  #(js/alert (str "marker-input" %) key)
-            #(do (swap! app-state assoc-in
-                        [:strain-data :markers my-key]
-                        (-> % .-target .-value)
-                        ) 
-                 (log (deref app-state)))
-
-            :class "marker_entry" :maxLength "15"
-            :size "20" :type "text" :value m}] 
+     :class "marker_entry" :maxLength "15"
+     :size "20" :type "text" :value m}] 
    ]
   )
 
 (defn marker-input-list [items]
-  [:table.table-condensed.zmarker-input-list
-   [:thead
-    [:tr 
-     [:th
+     [:ul.form-group.list-group.marker-input-list
+      [:li.list-group-item
       [:label.list-group-item-heading "Markers"]
       "    "
       [:button#myButton.btn-info.btn-xs
        {:autoComplete "off",
-        :on-click #(swap! app-state
-                          update-in 
-                          [:strain-data :markers]
-                          conj "") 
+        :on-click 
+        #(swap! app-state
+                update-in 
+                [:strain-data :markers]
+                conj "") 
         :type "button"}
        "Add marker"]
-      ]]]
+       ]
    (map-indexed
      (fn[idx itm]
-       [:tr
-        [:td
          ^{:key idx} [marker-input itm idx]
-         ]])
+         )
      items)
    ]
   )
@@ -331,7 +354,7 @@
 
 
 (defn strain[]
-  [:div [:h2 "New Strain page"]
+  [:form.form-vertical [:h2 "New Strain page"]
    [species-div
     (:species-list @app-state)
     (get-in @app-state [:strain-data :species])
@@ -339,9 +362,10 @@
     ]
    [copy-details-button]
    (if (get-in @app-state [:strain-data :copy-details-flag])
-   [copy-details-component]
+     [copy-details-component]
      )
    [marker-input-list (get-in @app-state [:strain-data :markers])]
+   [remarks (get-in @app-state [:strain-data :remarks])]
    [my-modal-div]
    [save-button]
    [:div [:a {:href "#/about"} "go to about page"]]])
@@ -408,7 +432,7 @@
   (log "load-app-state")
   (go
     (let [res (<! (pouchdb-core/get-doc db "app-state"))]
-      (log "response is")
+      (log "load app-state:response is")
       (log res)
       (reset! app-state res)
       (log "app-state is")
@@ -431,16 +455,17 @@
   (log "creating sample data")
   ;; Seems to work OK
   (dotimes [n 400] 
-           (go
-              (let [res (<! (pouchdb-core/post-doc db {:type "strain" :name (str "Strain" n)})) 
-                    ]
-                ))
-           ))
+    (go
+      (let [res (<! (pouchdb-core/post-doc db {:type "strain" :name (str "Strain" n)})) 
+            ]
+        ))
+    ))
 
 (defn init []
-;;  (save-app-state)
- (load-app-state)
-;;(create-sample-data)
+  (.sync db remote-db (hash-to-obj {:live true}))
+  ;  (save-app-state)
+  (load-app-state)
+  ;;(create-sample-data)
   (.log js/console "init")
   (reagent/render-component [strain] 
                             (.getElementById js/document "container"))

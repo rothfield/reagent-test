@@ -10,8 +10,8 @@ var jso = (function (){var or__3553__auto__ = cljs.core.clj__GT_js.call(null,obj
 if(cljs.core.truth_(or__3553__auto__)){
 return or__3553__auto__;
 } else {
-var obj15853 = {};
-return obj15853;
+var obj15893 = {};
+return obj15893;
 }
 })();
 return jso;
@@ -66,25 +66,25 @@ return cljs.core.async.put_BANG_.call(null,c,obj);
 * @param {...*} var_args
 */
 clj_pouchdb.core.create_db = (function() { 
-var create_db__delegate = function (p__15854){
-var vec__15857 = p__15854;
-var name = cljs.core.nth.call(null,vec__15857,(0),null);
-var vec__15858 = cljs.core.nthnext.call(null,vec__15857,(1));
-var options = cljs.core.nth.call(null,vec__15858,(0),null);
+var create_db__delegate = function (p__15894){
+var vec__15897 = p__15894;
+var name = cljs.core.nth.call(null,vec__15897,(0),null);
+var vec__15898 = cljs.core.nthnext.call(null,vec__15897,(1));
+var options = cljs.core.nth.call(null,vec__15898,(0),null);
 return (new PouchDB(name,clj_pouchdb.core.hash_to_obj.call(null,options)));
 };
 var create_db = function (var_args){
-var p__15854 = null;
+var p__15894 = null;
 if (arguments.length > 0) {
-var G__15859__i = 0, G__15859__a = new Array(arguments.length -  0);
-while (G__15859__i < G__15859__a.length) {G__15859__a[G__15859__i] = arguments[G__15859__i + 0]; ++G__15859__i;}
-  p__15854 = new cljs.core.IndexedSeq(G__15859__a,0);
+var G__15899__i = 0, G__15899__a = new Array(arguments.length -  0);
+while (G__15899__i < G__15899__a.length) {G__15899__a[G__15899__i] = arguments[G__15899__i + 0]; ++G__15899__i;}
+  p__15894 = new cljs.core.IndexedSeq(G__15899__a,0);
 } 
-return create_db__delegate.call(this,p__15854);};
+return create_db__delegate.call(this,p__15894);};
 create_db.cljs$lang$maxFixedArity = 0;
-create_db.cljs$lang$applyTo = (function (arglist__15860){
-var p__15854 = cljs.core.seq(arglist__15860);
-return create_db__delegate(p__15854);
+create_db.cljs$lang$applyTo = (function (arglist__15900){
+var p__15894 = cljs.core.seq(arglist__15900);
+return create_db__delegate(p__15894);
 });
 create_db.cljs$core$IFn$_invoke$arity$variadic = create_db__delegate;
 return create_db;
@@ -104,9 +104,9 @@ return c;
 * @param {...*} var_args
 */
 clj_pouchdb.core.put_doc = (function() { 
-var put_doc__delegate = function (db,doc,p__15861){
-var vec__15863 = p__15861;
-var options = cljs.core.nth.call(null,vec__15863,(0),null);
+var put_doc__delegate = function (db,doc,p__15901){
+var vec__15903 = p__15901;
+var options = cljs.core.nth.call(null,vec__15903,(0),null);
 var opts = clj_pouchdb.core.hash_to_obj.call(null,options);
 var js_doc = clj_pouchdb.core.hash_to_obj.call(null,doc);
 var c = cljs.core.async.chan.call(null,(1));
@@ -115,20 +115,20 @@ db.put(js_doc,opts,clj_pouchdb.core.responder.call(null,c));
 return c;
 };
 var put_doc = function (db,doc,var_args){
-var p__15861 = null;
+var p__15901 = null;
 if (arguments.length > 2) {
-var G__15864__i = 0, G__15864__a = new Array(arguments.length -  2);
-while (G__15864__i < G__15864__a.length) {G__15864__a[G__15864__i] = arguments[G__15864__i + 2]; ++G__15864__i;}
-  p__15861 = new cljs.core.IndexedSeq(G__15864__a,0);
+var G__15904__i = 0, G__15904__a = new Array(arguments.length -  2);
+while (G__15904__i < G__15904__a.length) {G__15904__a[G__15904__i] = arguments[G__15904__i + 2]; ++G__15904__i;}
+  p__15901 = new cljs.core.IndexedSeq(G__15904__a,0);
 } 
-return put_doc__delegate.call(this,db,doc,p__15861);};
+return put_doc__delegate.call(this,db,doc,p__15901);};
 put_doc.cljs$lang$maxFixedArity = 2;
-put_doc.cljs$lang$applyTo = (function (arglist__15865){
-var db = cljs.core.first(arglist__15865);
-arglist__15865 = cljs.core.next(arglist__15865);
-var doc = cljs.core.first(arglist__15865);
-var p__15861 = cljs.core.rest(arglist__15865);
-return put_doc__delegate(db,doc,p__15861);
+put_doc.cljs$lang$applyTo = (function (arglist__15905){
+var db = cljs.core.first(arglist__15905);
+arglist__15905 = cljs.core.next(arglist__15905);
+var doc = cljs.core.first(arglist__15905);
+var p__15901 = cljs.core.rest(arglist__15905);
+return put_doc__delegate(db,doc,p__15901);
 });
 put_doc.cljs$core$IFn$_invoke$arity$variadic = put_doc__delegate;
 return put_doc;
@@ -140,9 +140,9 @@ return put_doc;
 * @param {...*} var_args
 */
 clj_pouchdb.core.post_doc = (function() { 
-var post_doc__delegate = function (db,doc,p__15866){
-var vec__15868 = p__15866;
-var options = cljs.core.nth.call(null,vec__15868,(0),null);
+var post_doc__delegate = function (db,doc,p__15906){
+var vec__15908 = p__15906;
+var options = cljs.core.nth.call(null,vec__15908,(0),null);
 var opts = clj_pouchdb.core.hash_to_obj.call(null,options);
 var js_doc = clj_pouchdb.core.hash_to_obj.call(null,doc);
 var c = cljs.core.async.chan.call(null,(1));
@@ -151,20 +151,20 @@ db.post(js_doc,opts,clj_pouchdb.core.responder.call(null,c));
 return c;
 };
 var post_doc = function (db,doc,var_args){
-var p__15866 = null;
+var p__15906 = null;
 if (arguments.length > 2) {
-var G__15869__i = 0, G__15869__a = new Array(arguments.length -  2);
-while (G__15869__i < G__15869__a.length) {G__15869__a[G__15869__i] = arguments[G__15869__i + 2]; ++G__15869__i;}
-  p__15866 = new cljs.core.IndexedSeq(G__15869__a,0);
+var G__15909__i = 0, G__15909__a = new Array(arguments.length -  2);
+while (G__15909__i < G__15909__a.length) {G__15909__a[G__15909__i] = arguments[G__15909__i + 2]; ++G__15909__i;}
+  p__15906 = new cljs.core.IndexedSeq(G__15909__a,0);
 } 
-return post_doc__delegate.call(this,db,doc,p__15866);};
+return post_doc__delegate.call(this,db,doc,p__15906);};
 post_doc.cljs$lang$maxFixedArity = 2;
-post_doc.cljs$lang$applyTo = (function (arglist__15870){
-var db = cljs.core.first(arglist__15870);
-arglist__15870 = cljs.core.next(arglist__15870);
-var doc = cljs.core.first(arglist__15870);
-var p__15866 = cljs.core.rest(arglist__15870);
-return post_doc__delegate(db,doc,p__15866);
+post_doc.cljs$lang$applyTo = (function (arglist__15910){
+var db = cljs.core.first(arglist__15910);
+arglist__15910 = cljs.core.next(arglist__15910);
+var doc = cljs.core.first(arglist__15910);
+var p__15906 = cljs.core.rest(arglist__15910);
+return post_doc__delegate(db,doc,p__15906);
 });
 post_doc.cljs$core$IFn$_invoke$arity$variadic = post_doc__delegate;
 return post_doc;
@@ -175,29 +175,29 @@ return post_doc;
 * @param {...*} var_args
 */
 clj_pouchdb.core.get_doc = (function() { 
-var get_doc__delegate = function (db,docid,p__15871){
-var vec__15873 = p__15871;
-var options = cljs.core.nth.call(null,vec__15873,(0),null);
+var get_doc__delegate = function (db,docid,p__15911){
+var vec__15913 = p__15911;
+var options = cljs.core.nth.call(null,vec__15913,(0),null);
 var c = cljs.core.async.chan.call(null,(1));
 db.get(docid,clj_pouchdb.core.hash_to_obj.call(null,options),clj_pouchdb.core.responder.call(null,c));
 
 return c;
 };
 var get_doc = function (db,docid,var_args){
-var p__15871 = null;
+var p__15911 = null;
 if (arguments.length > 2) {
-var G__15874__i = 0, G__15874__a = new Array(arguments.length -  2);
-while (G__15874__i < G__15874__a.length) {G__15874__a[G__15874__i] = arguments[G__15874__i + 2]; ++G__15874__i;}
-  p__15871 = new cljs.core.IndexedSeq(G__15874__a,0);
+var G__15914__i = 0, G__15914__a = new Array(arguments.length -  2);
+while (G__15914__i < G__15914__a.length) {G__15914__a[G__15914__i] = arguments[G__15914__i + 2]; ++G__15914__i;}
+  p__15911 = new cljs.core.IndexedSeq(G__15914__a,0);
 } 
-return get_doc__delegate.call(this,db,docid,p__15871);};
+return get_doc__delegate.call(this,db,docid,p__15911);};
 get_doc.cljs$lang$maxFixedArity = 2;
-get_doc.cljs$lang$applyTo = (function (arglist__15875){
-var db = cljs.core.first(arglist__15875);
-arglist__15875 = cljs.core.next(arglist__15875);
-var docid = cljs.core.first(arglist__15875);
-var p__15871 = cljs.core.rest(arglist__15875);
-return get_doc__delegate(db,docid,p__15871);
+get_doc.cljs$lang$applyTo = (function (arglist__15915){
+var db = cljs.core.first(arglist__15915);
+arglist__15915 = cljs.core.next(arglist__15915);
+var docid = cljs.core.first(arglist__15915);
+var p__15911 = cljs.core.rest(arglist__15915);
+return get_doc__delegate(db,docid,p__15911);
 });
 get_doc.cljs$core$IFn$_invoke$arity$variadic = get_doc__delegate;
 return get_doc;
@@ -208,29 +208,29 @@ return get_doc;
 * @param {...*} var_args
 */
 clj_pouchdb.core.remove_doc = (function() { 
-var remove_doc__delegate = function (db,doc,p__15876){
-var vec__15878 = p__15876;
-var options = cljs.core.nth.call(null,vec__15878,(0),null);
+var remove_doc__delegate = function (db,doc,p__15916){
+var vec__15918 = p__15916;
+var options = cljs.core.nth.call(null,vec__15918,(0),null);
 var c = cljs.core.async.chan.call(null,(1));
 db.remove(clj_pouchdb.core.hash_to_obj.call(null,doc),clj_pouchdb.core.hash_to_obj.call(null,options),clj_pouchdb.core.responder.call(null,c));
 
 return c;
 };
 var remove_doc = function (db,doc,var_args){
-var p__15876 = null;
+var p__15916 = null;
 if (arguments.length > 2) {
-var G__15879__i = 0, G__15879__a = new Array(arguments.length -  2);
-while (G__15879__i < G__15879__a.length) {G__15879__a[G__15879__i] = arguments[G__15879__i + 2]; ++G__15879__i;}
-  p__15876 = new cljs.core.IndexedSeq(G__15879__a,0);
+var G__15919__i = 0, G__15919__a = new Array(arguments.length -  2);
+while (G__15919__i < G__15919__a.length) {G__15919__a[G__15919__i] = arguments[G__15919__i + 2]; ++G__15919__i;}
+  p__15916 = new cljs.core.IndexedSeq(G__15919__a,0);
 } 
-return remove_doc__delegate.call(this,db,doc,p__15876);};
+return remove_doc__delegate.call(this,db,doc,p__15916);};
 remove_doc.cljs$lang$maxFixedArity = 2;
-remove_doc.cljs$lang$applyTo = (function (arglist__15880){
-var db = cljs.core.first(arglist__15880);
-arglist__15880 = cljs.core.next(arglist__15880);
-var doc = cljs.core.first(arglist__15880);
-var p__15876 = cljs.core.rest(arglist__15880);
-return remove_doc__delegate(db,doc,p__15876);
+remove_doc.cljs$lang$applyTo = (function (arglist__15920){
+var db = cljs.core.first(arglist__15920);
+arglist__15920 = cljs.core.next(arglist__15920);
+var doc = cljs.core.first(arglist__15920);
+var p__15916 = cljs.core.rest(arglist__15920);
+return remove_doc__delegate(db,doc,p__15916);
 });
 remove_doc.cljs$core$IFn$_invoke$arity$variadic = remove_doc__delegate;
 return remove_doc;
@@ -241,31 +241,31 @@ return remove_doc;
 * @param {...*} var_args
 */
 clj_pouchdb.core.bulk_docs = (function() { 
-var bulk_docs__delegate = function (db,docs,p__15881){
-var vec__15885 = p__15881;
-var options = cljs.core.nth.call(null,vec__15885,(0),null);
+var bulk_docs__delegate = function (db,docs,p__15921){
+var vec__15925 = p__15921;
+var options = cljs.core.nth.call(null,vec__15925,(0),null);
 var c = cljs.core.async.chan.call(null,(1));
-db.bulkDocs((function (){var obj15887 = {"docs":clj_pouchdb.core.hash_to_obj.call(null,docs)};
-return obj15887;
+db.bulkDocs((function (){var obj15927 = {"docs":clj_pouchdb.core.hash_to_obj.call(null,docs)};
+return obj15927;
 })(),clj_pouchdb.core.hash_to_obj.call(null,options),clj_pouchdb.core.responder.call(null,c));
 
 return c;
 };
 var bulk_docs = function (db,docs,var_args){
-var p__15881 = null;
+var p__15921 = null;
 if (arguments.length > 2) {
-var G__15888__i = 0, G__15888__a = new Array(arguments.length -  2);
-while (G__15888__i < G__15888__a.length) {G__15888__a[G__15888__i] = arguments[G__15888__i + 2]; ++G__15888__i;}
-  p__15881 = new cljs.core.IndexedSeq(G__15888__a,0);
+var G__15928__i = 0, G__15928__a = new Array(arguments.length -  2);
+while (G__15928__i < G__15928__a.length) {G__15928__a[G__15928__i] = arguments[G__15928__i + 2]; ++G__15928__i;}
+  p__15921 = new cljs.core.IndexedSeq(G__15928__a,0);
 } 
-return bulk_docs__delegate.call(this,db,docs,p__15881);};
+return bulk_docs__delegate.call(this,db,docs,p__15921);};
 bulk_docs.cljs$lang$maxFixedArity = 2;
-bulk_docs.cljs$lang$applyTo = (function (arglist__15889){
-var db = cljs.core.first(arglist__15889);
-arglist__15889 = cljs.core.next(arglist__15889);
-var docs = cljs.core.first(arglist__15889);
-var p__15881 = cljs.core.rest(arglist__15889);
-return bulk_docs__delegate(db,docs,p__15881);
+bulk_docs.cljs$lang$applyTo = (function (arglist__15929){
+var db = cljs.core.first(arglist__15929);
+arglist__15929 = cljs.core.next(arglist__15929);
+var docs = cljs.core.first(arglist__15929);
+var p__15921 = cljs.core.rest(arglist__15929);
+return bulk_docs__delegate(db,docs,p__15921);
 });
 bulk_docs.cljs$core$IFn$_invoke$arity$variadic = bulk_docs__delegate;
 return bulk_docs;
@@ -276,27 +276,27 @@ return bulk_docs;
 * @param {...*} var_args
 */
 clj_pouchdb.core.all_docs = (function() { 
-var all_docs__delegate = function (db,p__15890){
-var vec__15892 = p__15890;
-var options = cljs.core.nth.call(null,vec__15892,(0),null);
+var all_docs__delegate = function (db,p__15930){
+var vec__15932 = p__15930;
+var options = cljs.core.nth.call(null,vec__15932,(0),null);
 var c = cljs.core.async.chan.call(null,(1));
 db.allDocs(clj_pouchdb.core.hash_to_obj.call(null,options),clj_pouchdb.core.responder.call(null,c));
 
 return c;
 };
 var all_docs = function (db,var_args){
-var p__15890 = null;
+var p__15930 = null;
 if (arguments.length > 1) {
-var G__15893__i = 0, G__15893__a = new Array(arguments.length -  1);
-while (G__15893__i < G__15893__a.length) {G__15893__a[G__15893__i] = arguments[G__15893__i + 1]; ++G__15893__i;}
-  p__15890 = new cljs.core.IndexedSeq(G__15893__a,0);
+var G__15933__i = 0, G__15933__a = new Array(arguments.length -  1);
+while (G__15933__i < G__15933__a.length) {G__15933__a[G__15933__i] = arguments[G__15933__i + 1]; ++G__15933__i;}
+  p__15930 = new cljs.core.IndexedSeq(G__15933__a,0);
 } 
-return all_docs__delegate.call(this,db,p__15890);};
+return all_docs__delegate.call(this,db,p__15930);};
 all_docs.cljs$lang$maxFixedArity = 1;
-all_docs.cljs$lang$applyTo = (function (arglist__15894){
-var db = cljs.core.first(arglist__15894);
-var p__15890 = cljs.core.rest(arglist__15894);
-return all_docs__delegate(db,p__15890);
+all_docs.cljs$lang$applyTo = (function (arglist__15934){
+var db = cljs.core.first(arglist__15934);
+var p__15930 = cljs.core.rest(arglist__15934);
+return all_docs__delegate(db,p__15930);
 });
 all_docs.cljs$core$IFn$_invoke$arity$variadic = all_docs__delegate;
 return all_docs;
@@ -307,27 +307,27 @@ return all_docs;
 * @param {...*} var_args
 */
 clj_pouchdb.core.changes = (function() { 
-var changes__delegate = function (db,p__15895){
-var vec__15897 = p__15895;
-var options = cljs.core.nth.call(null,vec__15897,(0),null);
+var changes__delegate = function (db,p__15935){
+var vec__15937 = p__15935;
+var options = cljs.core.nth.call(null,vec__15937,(0),null);
 var c = cljs.core.async.chan.call(null,(1));
 db.changes(clj_pouchdb.core.hash_to_obj.call(null,options),clj_pouchdb.core.responder.call(null,c));
 
 return c;
 };
 var changes = function (db,var_args){
-var p__15895 = null;
+var p__15935 = null;
 if (arguments.length > 1) {
-var G__15898__i = 0, G__15898__a = new Array(arguments.length -  1);
-while (G__15898__i < G__15898__a.length) {G__15898__a[G__15898__i] = arguments[G__15898__i + 1]; ++G__15898__i;}
-  p__15895 = new cljs.core.IndexedSeq(G__15898__a,0);
+var G__15938__i = 0, G__15938__a = new Array(arguments.length -  1);
+while (G__15938__i < G__15938__a.length) {G__15938__a[G__15938__i] = arguments[G__15938__i + 1]; ++G__15938__i;}
+  p__15935 = new cljs.core.IndexedSeq(G__15938__a,0);
 } 
-return changes__delegate.call(this,db,p__15895);};
+return changes__delegate.call(this,db,p__15935);};
 changes.cljs$lang$maxFixedArity = 1;
-changes.cljs$lang$applyTo = (function (arglist__15899){
-var db = cljs.core.first(arglist__15899);
-var p__15895 = cljs.core.rest(arglist__15899);
-return changes__delegate(db,p__15895);
+changes.cljs$lang$applyTo = (function (arglist__15939){
+var db = cljs.core.first(arglist__15939);
+var p__15935 = cljs.core.rest(arglist__15939);
+return changes__delegate(db,p__15935);
 });
 changes.cljs$core$IFn$_invoke$arity$variadic = changes__delegate;
 return changes;
@@ -338,26 +338,26 @@ return changes;
 * @param {...*} var_args
 */
 clj_pouchdb.core.replicate_db = (function() { 
-var replicate_db__delegate = function (source,target,p__15900){
-var vec__15902 = p__15900;
-var options = cljs.core.nth.call(null,vec__15902,(0),null);
+var replicate_db__delegate = function (source,target,p__15940){
+var vec__15942 = p__15940;
+var options = cljs.core.nth.call(null,vec__15942,(0),null);
 return PouchDB.replicate(source,target,clj_pouchdb.core.hash_to_obj.call(null,options));
 };
 var replicate_db = function (source,target,var_args){
-var p__15900 = null;
+var p__15940 = null;
 if (arguments.length > 2) {
-var G__15903__i = 0, G__15903__a = new Array(arguments.length -  2);
-while (G__15903__i < G__15903__a.length) {G__15903__a[G__15903__i] = arguments[G__15903__i + 2]; ++G__15903__i;}
-  p__15900 = new cljs.core.IndexedSeq(G__15903__a,0);
+var G__15943__i = 0, G__15943__a = new Array(arguments.length -  2);
+while (G__15943__i < G__15943__a.length) {G__15943__a[G__15943__i] = arguments[G__15943__i + 2]; ++G__15943__i;}
+  p__15940 = new cljs.core.IndexedSeq(G__15943__a,0);
 } 
-return replicate_db__delegate.call(this,source,target,p__15900);};
+return replicate_db__delegate.call(this,source,target,p__15940);};
 replicate_db.cljs$lang$maxFixedArity = 2;
-replicate_db.cljs$lang$applyTo = (function (arglist__15904){
-var source = cljs.core.first(arglist__15904);
-arglist__15904 = cljs.core.next(arglist__15904);
-var target = cljs.core.first(arglist__15904);
-var p__15900 = cljs.core.rest(arglist__15904);
-return replicate_db__delegate(source,target,p__15900);
+replicate_db.cljs$lang$applyTo = (function (arglist__15944){
+var source = cljs.core.first(arglist__15944);
+arglist__15944 = cljs.core.next(arglist__15944);
+var target = cljs.core.first(arglist__15944);
+var p__15940 = cljs.core.rest(arglist__15944);
+return replicate_db__delegate(source,target,p__15940);
 });
 replicate_db.cljs$core$IFn$_invoke$arity$variadic = replicate_db__delegate;
 return replicate_db;
@@ -378,31 +378,31 @@ return cljs.core.comp.call(null,clj_pouchdb.core.hash_to_obj,mapper,clj_pouchdb.
 * @param {...*} var_args
 */
 clj_pouchdb.core.query = (function() { 
-var query__delegate = function (db,fun,p__15905){
-var vec__15909 = p__15905;
-var options = cljs.core.nth.call(null,vec__15909,(0),null);
+var query__delegate = function (db,fun,p__15945){
+var vec__15949 = p__15945;
+var options = cljs.core.nth.call(null,vec__15949,(0),null);
 var c = cljs.core.async.chan.call(null,(1));
-db.query((function (){var obj15911 = {"map":fun};
-return obj15911;
+db.query((function (){var obj15951 = {"map":fun};
+return obj15951;
 })(),clj_pouchdb.core.hash_to_obj.call(null,options),clj_pouchdb.core.responder.call(null,c));
 
 return c;
 };
 var query = function (db,fun,var_args){
-var p__15905 = null;
+var p__15945 = null;
 if (arguments.length > 2) {
-var G__15912__i = 0, G__15912__a = new Array(arguments.length -  2);
-while (G__15912__i < G__15912__a.length) {G__15912__a[G__15912__i] = arguments[G__15912__i + 2]; ++G__15912__i;}
-  p__15905 = new cljs.core.IndexedSeq(G__15912__a,0);
+var G__15952__i = 0, G__15952__a = new Array(arguments.length -  2);
+while (G__15952__i < G__15952__a.length) {G__15952__a[G__15952__i] = arguments[G__15952__i + 2]; ++G__15952__i;}
+  p__15945 = new cljs.core.IndexedSeq(G__15952__a,0);
 } 
-return query__delegate.call(this,db,fun,p__15905);};
+return query__delegate.call(this,db,fun,p__15945);};
 query.cljs$lang$maxFixedArity = 2;
-query.cljs$lang$applyTo = (function (arglist__15913){
-var db = cljs.core.first(arglist__15913);
-arglist__15913 = cljs.core.next(arglist__15913);
-var fun = cljs.core.first(arglist__15913);
-var p__15905 = cljs.core.rest(arglist__15913);
-return query__delegate(db,fun,p__15905);
+query.cljs$lang$applyTo = (function (arglist__15953){
+var db = cljs.core.first(arglist__15953);
+arglist__15953 = cljs.core.next(arglist__15953);
+var fun = cljs.core.first(arglist__15953);
+var p__15945 = cljs.core.rest(arglist__15953);
+return query__delegate(db,fun,p__15945);
 });
 query.cljs$core$IFn$_invoke$arity$variadic = query__delegate;
 return query;
@@ -422,27 +422,27 @@ return c;
 * @param {...*} var_args
 */
 clj_pouchdb.core.compact = (function() { 
-var compact__delegate = function (db,p__15914){
-var vec__15916 = p__15914;
-var options = cljs.core.nth.call(null,vec__15916,(0),null);
+var compact__delegate = function (db,p__15954){
+var vec__15956 = p__15954;
+var options = cljs.core.nth.call(null,vec__15956,(0),null);
 var c = cljs.core.async.chan.call(null,(1));
 db.compact(clj_pouchdb.core.hash_to_obj.call(null,options),clj_pouchdb.core.responder.call(null,c));
 
 return c;
 };
 var compact = function (db,var_args){
-var p__15914 = null;
+var p__15954 = null;
 if (arguments.length > 1) {
-var G__15917__i = 0, G__15917__a = new Array(arguments.length -  1);
-while (G__15917__i < G__15917__a.length) {G__15917__a[G__15917__i] = arguments[G__15917__i + 1]; ++G__15917__i;}
-  p__15914 = new cljs.core.IndexedSeq(G__15917__a,0);
+var G__15957__i = 0, G__15957__a = new Array(arguments.length -  1);
+while (G__15957__i < G__15957__a.length) {G__15957__a[G__15957__i] = arguments[G__15957__i + 1]; ++G__15957__i;}
+  p__15954 = new cljs.core.IndexedSeq(G__15957__a,0);
 } 
-return compact__delegate.call(this,db,p__15914);};
+return compact__delegate.call(this,db,p__15954);};
 compact.cljs$lang$maxFixedArity = 1;
-compact.cljs$lang$applyTo = (function (arglist__15918){
-var db = cljs.core.first(arglist__15918);
-var p__15914 = cljs.core.rest(arglist__15918);
-return compact__delegate(db,p__15914);
+compact.cljs$lang$applyTo = (function (arglist__15958){
+var db = cljs.core.first(arglist__15958);
+var p__15954 = cljs.core.rest(arglist__15958);
+return compact__delegate(db,p__15954);
 });
 compact.cljs$core$IFn$_invoke$arity$variadic = compact__delegate;
 return compact;

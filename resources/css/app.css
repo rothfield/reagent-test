@@ -1,3 +1,8 @@
 .marker-input-list.list-group {
 		max-width: 300px;
 }
+.marker-input-list .list-group-item {
+		padding: 0px 0px;
+		margin-bottom: -1px;
+		border: 0px;
+}
